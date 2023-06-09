@@ -1,0 +1,49 @@
+version: '3.8'
+services:
+  vprodb:
+   build:
+     context: ./db/
+   ports:
+   - 3306:3306
+   environment:
+    - MYSQL_ROOT_PASSWORD=vprodbpass
+    - MYSQL_DATABASE=accounts
+   volumes:
+    - vprodb:/var/lib/mysql
+   container_name: vprodb 
+
+  vpromq01:
+   image: rabbitmq
+   ports:
+   - 15672:15672
+   environment:
+   - RABBITMQ_DEFAULT_USER=guest
+   - RABBITMQ_DEFAULT_PASS=guest
+
+  vprocache01:
+   image: memcached
+   ports:
+   - 11211:11211
+  
+  vproapp:
+   build:
+    context: ./app
+   ports:
+   - 8080:8080
+   volumes:
+    - vprodata:/usr/local/tomcat/webapps
+   container_name: vproapp 
+   
+  vrpoweb:
+   build:
+    context: ./web
+   ports:
+   - 80:80  
+   container_name: vproweb
+
+volumes:
+    vprodata: {}
+    vprodb: {}
+
+
+
