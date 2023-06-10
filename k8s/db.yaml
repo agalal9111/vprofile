@@ -16,12 +16,12 @@ spec:
     spec:
       containers:
       - name: db-container
-        args:
-        - "--ignore-db-dir=lost+found"
+        #args:
+        #- "--ignore-db-dir=lost+found"
         image: agalal9111/vprodb
-        volumeMounts:
-        - name: dbdata
-          mountPath: /var/lib/mysql
+        #volumeMounts:
+        #- name: dbdata
+        #mountPath: /var/lib/mysql
         ports:
         - containerPort: 3306
         env:
@@ -32,11 +32,11 @@ spec:
               name: app-secret
       nodeSelector:
         zone: us-east-1a
-      volumes:
-      - name: dbdata
-        awsElasticBlockStore:
-          volumeID: vol-07424a0a31ee06e5f
-          fsType: ext4
+      #volumes:
+#- name: dbdata
+#awsElasticBlockStore:
+#volumeID: vol-07424a0a31ee06e5f
+#fsType: ext4
 ---
 apiVersion: v1
 kind: Service
