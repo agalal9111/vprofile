@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: app-container
-        image: agalal9111/vprofileapp
+        image: agalal9111/vproapp
         ports:
         - containerPort: 8080
       initContainers:
