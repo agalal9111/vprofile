@@ -17,5 +17,11 @@ pipeline{
                 }
             }
         }
+        stage('Unit Test'){
+            sh 'mvn test'
+        }
+                stage('Check Style'){
+            sh 'mvn checkstyle:checkstyle'
+        }
     }
 }
