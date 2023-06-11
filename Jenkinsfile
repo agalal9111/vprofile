@@ -10,7 +10,7 @@ pipeline{
                 sh 'mvn install'
             }
             post{
-                sucess{
+                success{
                     echo "archiving the artifact"
                     archiveArtifacts artifacts: '**/*.war'
                     
