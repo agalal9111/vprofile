@@ -18,10 +18,16 @@ pipeline{
             }
         }
         stage('Unit Test'){
-            sh 'mvn test'
+            steps{
+                    sh 'mvn test'
+            }
+            
         }
                 stage('Check Style'){
-            sh 'mvn checkstyle:checkstyle'
+                    steps{
+                        sh 'mvn checkstyle:checkstyle'
+                    }
+            
         }
     }
 }
