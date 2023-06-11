@@ -4,6 +4,10 @@ pipeline{
         maven "MAVEN3"
         jdk "JDK8"
     }
+        environment {
+        registry = "agalal9111/vproappdock"
+        registryCredential = 'dockerhub'
+    }
     stages{
         stage('BUILD'){
             steps{
